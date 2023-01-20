@@ -7,22 +7,13 @@ class FirstScene extends StatefulWidget {
 }
 
 class _FirstSceneState extends State<FirstScene> {
-  final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-    onPrimary: Colors.black87,
-    primary: Color(0xff2B637B),
-    minimumSize: Size(318,20),
-    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-    ),
-  );
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Image.asset('assets/img/background 1.png'),
+        Image.asset('assets/img/background 1.png',fit:BoxFit.fill  ),
           Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.transparent,
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +25,7 @@ class _FirstSceneState extends State<FirstScene> {
                       child: new Image.asset('assets/img/ic_photo.png')
                   ),
                   Container(
-                    width: 300,
+                    width: 318,
                     decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     margin: EdgeInsets.only(top: 70),
@@ -46,13 +37,13 @@ class _FirstSceneState extends State<FirstScene> {
                         autofocus: false,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(
                               color: Colors.white,
                             ),
                           ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(
                               color: Colors.white,
                             ),
@@ -63,13 +54,13 @@ class _FirstSceneState extends State<FirstScene> {
                           contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         ),
                         onChanged: (value) {
-                          // Global.nik = value;
+                          Global.name = value;
                         },
                       ),
                     ),
                   ),
                   Container(
-                    width: 300,
+                    width: 318,
                     decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     margin: EdgeInsets.symmetric(vertical: 20),
@@ -81,13 +72,13 @@ class _FirstSceneState extends State<FirstScene> {
                         autofocus: false,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(
                               color: Colors.white,
                             ),
                           ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(
                               color: Colors.white,
                             ),
@@ -98,40 +89,52 @@ class _FirstSceneState extends State<FirstScene> {
                           contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                         ),
                         onChanged: (value) {
-                          // Global.nik = value;
+                          Global.palindrome = value;
                         },
                       ),
                     ),
                   ),
                   Container(
                     margin:  EdgeInsets.symmetric(vertical: 20),
-                    height: 41,
+                    height: 53,
                       child: Container(
                       child:
                         ElevatedButton(
-                        style: raisedButtonStyle,
-                        onPressed: () { },
-                        child: Text('CHECK',style: TextStyle(color: Colors.white, fontSize: 12)),
+                        style: ButtonStyle.raisedButtonStyle,
+                        onPressed: () {
+                          Global.palindrome =  stdin.readLineSync();
+                          String? reverse = Global.palindrome?.split('').reversed.join('');
+                          if(Global.palindrome == reverse)
+                          {
+                            Global.result = 'isPalindrome';
+                          }else{
+                            Global.result = 'not palindrome';
+                          }
+
+                          _dialogResult();
+                        },
+                        child: Text('CHECK',style: TextStyle(color: Colors.white, fontFamily: Fonts.MEDIUM,fontSize: 12)),
                     )
                     ),
                   ),
                   Container(
                     // margin:  EdgeInsets.only(top: 20),
-                    height: 41,
+                    height: 53,
                       child: Container(
                       child:
                         ElevatedButton(
-                        style: raisedButtonStyle,
+                        style: ButtonStyle.raisedButtonStyle,
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => SecondScene()),
                           );
                         },
-                        child: Text('NEXT',style: TextStyle(color: Colors.white, fontSize: 12)),
+                        child: Text('NEXT',style: TextStyle(color: Colors.white, fontFamily: Fonts.MEDIUM,fontSize: 12)),
                     )
                     ),
                   ),
+                  // Text(Global.result,style: TextStyle(color: Colors.white, fontFamily: Fonts.MEDIUM,fontSize: 12))
                 ],
               ),
             ),
@@ -140,4 +143,36 @@ class _FirstSceneState extends State<FirstScene> {
       ],
     );
   }
+
+  ///dialog
+  Future<void> _dialogResult() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Result'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(Global.result,style: TextStyle(color: Colors.black, fontFamily: Fonts.MEDIUM,fontSize: 14)),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Oke'),
+              onPressed: () {
+                Global.palindrome = '';
+                Global.result = '';
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
 }

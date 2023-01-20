@@ -9,3 +9,5 @@ import 'package:flutter/material.dart';
 
 part 'modules/first_scene.dart';
 part 'modules/second_scene.dart';
+part 'modules/third_scene.dart';
+part 'global/variable.dart';

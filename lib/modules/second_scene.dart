@@ -7,21 +7,13 @@ class SecondScene extends StatefulWidget {
 }
 
 class _SecondSceneState extends State<SecondScene> {
-  final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-    onPrimary: Colors.black87,
-    primary: Color(0xff2B637B),
-    minimumSize: Size(318,20),
-    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(10)),
-    ),
-  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios,color: Colors.black,),
+          icon: Icon(Icons.arrow_back_ios,color: Color(0xff554AF0)),
           onPressed: () {
             Navigator.push(
               context,
@@ -30,41 +22,46 @@ class _SecondSceneState extends State<SecondScene> {
           },
         ),
         backgroundColor: Colors.white,
-        title: Text('Second Scene',style: TextStyle(color: Colors.black, fontSize: 12)),
+        title: Text('Second Scene',textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontFamily: Fonts.BOLD, fontSize: 16)),
     ),
-    body: Column(
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+      body: Container(
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        height: MediaQuery.of(context).size.height,
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Welcome'),
-            Text('user')
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Welcome', style: TextStyle(color: Colors.black, fontFamily:Fonts.MEDIUM,fontSize: 12)),
+                Text(Global.name,style: TextStyle(color: Colors.black, fontFamily:Fonts.BOLD,fontSize: 18))
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 250),
+              child: Center(child: Text('Name',textAlign: TextAlign.center,style: TextStyle(color: Colors.black, fontFamily:Fonts.BOLD,fontSize: 20))),
+            ),
+            Container(
+              margin:  EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+              height: 55,
+              child: Container(
+                  child:
+                  ElevatedButton(
+                    style: ButtonStyle.raisedButtonStyle,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ThirdScene()),
+                      );
+                    },
+                    child: Text('Choose a user',style: TextStyle(color: Colors.white, fontFamily:Fonts.MEDIUM,fontSize: 12)),
+                  )
+              ),
+            ),
           ],
         ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 50),
-          child: Text('Name'),
-        ),
-        Container(
-          // margin:  EdgeInsets.only(top: 20),
-          height: 41,
-          child: Container(
-              child:
-              ElevatedButton(
-                style: raisedButtonStyle,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SecondScene()),
-                  );
-                },
-                child: Text('Choose a user',style: TextStyle(color: Colors.white, fontSize: 12)),
-              )
-          ),
-        ),
-      ],
-    ),
-    );
+      ),
+      );
   }
 }
