@@ -10,18 +10,19 @@ class _FirstSceneState extends State<FirstScene> {
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
     onPrimary: Colors.black87,
     primary: Color(0xff2B637B),
-    minimumSize: Size(300,36),
+    minimumSize: Size(318,20),
     padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
     shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(30)),
+      borderRadius: BorderRadius.all(Radius.circular(10)),
     ),
   );
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // Image.asset('assets/img/background 1.png'),
           Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
             body: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +57,7 @@ class _FirstSceneState extends State<FirstScene> {
                               color: Colors.white,
                             ),
                           ),
-                          hintText: 'NIK',
+                          hintText: 'Name',
                           fillColor: Colors.white,
                           filled: true,
                           contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
@@ -68,39 +69,74 @@ class _FirstSceneState extends State<FirstScene> {
                     ),
                   ),
                   Container(
-                    margin:  EdgeInsets.symmetric(vertical: 50),
-                    height: 60,
-                    child: ButtonTheme(
-                      minWidth: 300,
-                      child: Container(
-                        // child: RaisedButton(
-                        //   shape: RoundedRectangleBorder(
-                        //       borderRadius: BorderRadius.circular(30),
-                        //       side: BorderSide(color: Color(0xff2B637B))),
-                        //   onPressed: () async {
-                        //
-                        //   },
-                        //   color: Color(0xff2B637B),
-                        //   textColor: Colors.white,
-                        //   child: Text("Get Started",
-                        //       style: TextStyle(color: Colors.white, fontSize: 18)),
-                        // ),
-                      child:
-                      ElevatedButton(
-                      style: raisedButtonStyle,
-                      onPressed: () { },
-                      child: Text('Check'),
-                    )
-
-
+                    width: 300,
+                    decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    child: Material(
+                      elevation: 20.0,
+                      shadowColor: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(20),
+                      child: TextFormField(
+                        autofocus: false,
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                          hintText: 'Palindrome',
+                          fillColor: Colors.white,
+                          filled: true,
+                          contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                        ),
+                        onChanged: (value) {
+                          // Global.nik = value;
+                        },
+                      ),
+                    ),
                   ),
+                  Container(
+                    margin:  EdgeInsets.symmetric(vertical: 20),
+                    height: 41,
+                      child: Container(
+                      child:
+                        ElevatedButton(
+                        style: raisedButtonStyle,
+                        onPressed: () { },
+                        child: Text('CHECK',style: TextStyle(color: Colors.white, fontSize: 12)),
+                    )
+                    ),
+                  ),
+                  Container(
+                    // margin:  EdgeInsets.only(top: 20),
+                    height: 41,
+                      child: Container(
+                      child:
+                        ElevatedButton(
+                        style: raisedButtonStyle,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SecondScene()),
+                          );
+                        },
+                        child: Text('NEXT',style: TextStyle(color: Colors.white, fontSize: 12)),
+                    )
                     ),
                   ),
                 ],
               ),
             ),
         ),
-        Image.asset('assets/img/background 1.png'),
+
       ],
     );
   }

@@ -76,9 +76,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: RobotoBold
+    - family: PoppinsBold
       fonts:
         - asset: assets/font/Poppins-ExtraBold.ttf
+    - family: PoppinsMedium
+      fonts:
+        - asset: assets/font/Poppins-Medium.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

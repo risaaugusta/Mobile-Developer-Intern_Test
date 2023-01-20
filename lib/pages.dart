@@ -8,3 +8,4 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 part 'modules/first_scene.dart';
+part 'modules/second_scene.dart';
