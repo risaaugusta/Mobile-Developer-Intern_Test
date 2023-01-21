@@ -13,6 +13,7 @@ import 'dart:async';
 part 'modules/first_screen.dart';
 part 'modules/second_screen.dart';
 part 'modules/third_screen.dart';
+part 'modules/testig.dart';
 part 'api_services/request/api_list_user.dart';
 part 'api_services/response/users.dart';
 part 'global/variable.dart';

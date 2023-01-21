@@ -8,6 +8,8 @@ class ThirdScreen extends StatefulWidget {
 }
 
 class _ThirdScreenState extends State<ThirdScreen> {
+  var data = ApiServices()._fecthDataUsers();
+  var moreData = ApiServices()._fetchDataPage2();
 
   @override
   Widget build(BuildContext context) {
@@ -28,44 +30,54 @@ class _ThirdScreenState extends State<ThirdScreen> {
       ),
       body: Container(
         child: FutureBuilder<List<dynamic>>(
-          future: ApiServices()._fecthDataUsers(),
+          future: data,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              return ListView.separated(
-                  separatorBuilder: (context, index) => Divider(
-                    color: Colors.grey,
-                  ),
-                  padding: EdgeInsets.all(10),
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SecondScreen()),
-                        );
-
-                        setState(() {
-                          Global.selectedName = snapshot.data[index]['first_name'] + " " + snapshot.data[index]['last_name'];
-                        });
-                      },
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          radius: 30,
-                          backgroundImage:
-                          NetworkImage(snapshot.data[index]['avatar']),
-                        ),
-                        title: Text(snapshot.data[index]['first_name'] + " " + snapshot.data[index]['last_name'], style: TextStyle(color: Colors.black, fontFamily: Fonts.MEDIUM,fontSize: 16)),
-                        subtitle: Text(snapshot.data[index]['email'], style: TextStyle(color: Color(0xff686777), fontFamily: Fonts.MEDIUM,fontSize: 10)),
+              return
+                RefreshIndicator(
+                  onRefresh: refreshData,
+                  child: ListView.separated(
+                      separatorBuilder: (context, index) => const Divider(
+                        color: Colors.grey,
                       ),
-                    );
-                  });
+                      padding: EdgeInsets.all(10),
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SecondScreen()),
+                            );
+                            setState(() {
+                              Global.selectedName = snapshot.data[index]['first_name'] + " " + snapshot.data[index]['last_name'];
+                            });
+                          },
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: 30,
+                              backgroundImage:
+                              NetworkImage(snapshot.data[index]['avatar']),
+                            ),
+                            title: Text(snapshot.data[index]['first_name'] + " " + snapshot.data[index]['last_name'], style: TextStyle(color: Colors.black, fontFamily: Fonts.MEDIUM,fontSize: 16)),
+                            subtitle: Text(snapshot.data[index]['email'], style: TextStyle(color: Color(0xff686777), fontFamily: Fonts.MEDIUM,fontSize: 10)),
+                          ),
+                        );
+                      })
+                );
             } else {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: Text('Data is empty'));
             }
           },
         ),
       ),
     );;
+  }
+
+  Future refreshData() async {
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {
+      data = ApiServices()._fetchDataPage2();
+    });
   }
 }
