@@ -19,7 +19,22 @@ class ButtonStyle{
 
 class Global{
   static String name = '';
-  static String? palindrome;
-  static String? reverse;
+  static String palindrome = '';
+  static String reverse = '';
   static String result = '';
+
+  void main() {
+    String stringToReverse = "acca";
+    String reversedString = "";
+    String beforeReverse = stringToReverse;
+    for (int j = stringToReverse.length - 1; j >= 0; j--) {
+      reversedString += stringToReverse[j];
+    }
+
+    if (beforeReverse == reversedString) {
+      print("String is Palindrome");
+    } else {
+      print("String is not Palindrome");
+    }
+  }
 }

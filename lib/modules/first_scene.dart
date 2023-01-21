@@ -102,9 +102,10 @@ class _FirstSceneState extends State<FirstScene> {
                         ElevatedButton(
                         style: ButtonStyle.raisedButtonStyle,
                         onPressed: () {
-                          Global.palindrome =  stdin.readLineSync();
-                          String? reverse = Global.palindrome?.split('').reversed.join('');
-                          if(Global.palindrome == reverse)
+                          for (int j = Global.palindrome.length - 1; j >= 0; j--) {
+                            Global.reverse += Global.palindrome[j];
+                          }
+                          if(Global.palindrome == Global.reverse)
                           {
                             Global.result = 'isPalindrome';
                           }else{
