@@ -11,7 +11,7 @@ class _FirstSceneState extends State<FirstScene> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset('assets/img/background 1.png',fit:BoxFit.fill  ),
+          Image.asset('assets/img/background 1.png',fit:BoxFit.cover, width: MediaQuery.of(context).size.width  ),
           Scaffold(
           backgroundColor: Colors.transparent,
             body: Center(
@@ -136,7 +136,6 @@ class _FirstSceneState extends State<FirstScene> {
                     )
                     ),
                   ),
-                  // Text(Global.result,style: TextStyle(color: Colors.white, fontFamily: Fonts.MEDIUM,fontSize: 12))
                 ],
               ),
             ),
@@ -165,8 +164,12 @@ class _FirstSceneState extends State<FirstScene> {
             TextButton(
               child: const Text('Oke'),
               onPressed: () {
-                Global.palindrome = '';
-                Global.result = '';
+                setState(() {
+                  Global.palindrome = '';
+                  Global.reverse = '';
+                  Global.result = '';
+                });
+
                 Navigator.pop(context);
               },
             ),
