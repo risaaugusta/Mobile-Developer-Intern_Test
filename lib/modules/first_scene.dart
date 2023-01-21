@@ -105,6 +105,7 @@ class _FirstSceneState extends State<FirstScene> {
                           for (int j = Global.palindrome.length - 1; j >= 0; j--) {
                             Global.reverse += Global.palindrome[j];
                           }
+
                           if(Global.palindrome == Global.reverse)
                           {
                             Global.result = 'isPalindrome';
