@@ -1,12 +1,12 @@
 part of '../pages.dart';
-class FirstScene extends StatefulWidget {
-  const FirstScene({Key? key}) : super(key: key);
+class FirstScreen extends StatefulWidget {
+  const FirstScreen({Key? key}) : super(key: key);
 
   @override
-  _FirstSceneState createState() => _FirstSceneState();
+  _FirstScreenState createState() => _FirstScreenState();
 }
 
-class _FirstSceneState extends State<FirstScene> {
+class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -129,7 +129,7 @@ class _FirstSceneState extends State<FirstScene> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => SecondScene()),
+                            MaterialPageRoute(builder: (context) => SecondScreen()),
                           );
                         },
                         child: Text('NEXT',style: TextStyle(color: Colors.white, fontFamily: Fonts.MEDIUM,fontSize: 12)),

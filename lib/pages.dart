@@ -10,9 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 
-part 'modules/first_scene.dart';
-part 'modules/second_scene.dart';
-part 'modules/third_scene.dart';
+part 'modules/first_screen.dart';
+part 'modules/second_screen.dart';
+part 'modules/third_screen.dart';
 part 'api_services/request/api_list_user.dart';
 part 'api_services/response/users.dart';
 part 'global/variable.dart';

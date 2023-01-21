@@ -1,13 +1,13 @@
 part of '../pages.dart';
 
-class ThirdScene extends StatefulWidget {
-  const ThirdScene({Key? key}) : super(key: key);
+class ThirdScreen extends StatefulWidget {
+  const ThirdScreen({Key? key}) : super(key: key);
 
   @override
-  _ThirdSceneState createState() => _ThirdSceneState();
+  _ThirdScreenState createState() => _ThirdScreenState();
 }
 
-class _ThirdSceneState extends State<ThirdScene> {
+class _ThirdScreenState extends State<ThirdScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,12 @@ class _ThirdSceneState extends State<ThirdScene> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SecondScene()),
+              MaterialPageRoute(builder: (context) => SecondScreen()),
             );
           },
         ),
         backgroundColor: Colors.white,
-        title: Text('Third Scene',textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontFamily: Fonts.BOLD, fontSize: 16)),
+        title: Text('Third Screen',textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontFamily: Fonts.BOLD, fontSize: 16)),
       ),
       body: Container(
         child: FutureBuilder<List<dynamic>>(
@@ -42,7 +42,7 @@ class _ThirdSceneState extends State<ThirdScene> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SecondScene()),
+                          MaterialPageRoute(builder: (context) => SecondScreen()),
                         );
 
                         setState(() {

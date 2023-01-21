@@ -1,12 +1,12 @@
 part of '../pages.dart';
-class SecondScene extends StatefulWidget {
-  const SecondScene({Key? key}) : super(key: key);
+class SecondScreen extends StatefulWidget {
+  const SecondScreen({Key? key}) : super(key: key);
 
   @override
-  _SecondSceneState createState() => _SecondSceneState();
+  _SecondScreenState createState() => _SecondScreenState();
 }
 
-class _SecondSceneState extends State<SecondScene> {
+class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,12 +17,12 @@ class _SecondSceneState extends State<SecondScene> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => FirstScene()),
+              MaterialPageRoute(builder: (context) => FirstScreen()),
             );
           },
         ),
         backgroundColor: Colors.white,
-        title: Text('Second Scene',textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontFamily: Fonts.BOLD, fontSize: 16)),
+        title: Text('Second Screen',textAlign: TextAlign.center, style: TextStyle(color: Colors.black, fontFamily: Fonts.BOLD, fontSize: 16)),
     ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -35,7 +35,7 @@ class _SecondSceneState extends State<SecondScene> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Welcome', style: TextStyle(color: Colors.black, fontFamily:Fonts.MEDIUM,fontSize: 12)),
+                Text('Welcome', style: TextStyle(color: Colors.black, fontFamily:Fonts.MEDIUM,fontSize: 14)),
                 Text(Global.name,style: TextStyle(color: Colors.black, fontFamily:Fonts.BOLD,fontSize: 18))
               ],
             ),
@@ -53,12 +53,15 @@ class _SecondSceneState extends State<SecondScene> {
                   ElevatedButton(
                     style: ButtonStyle.raisedButtonStyle,
                     onPressed: () {
+                      setState(() {
+                        Global.selectedName == '';
+                      });
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ThirdScene()),
+                        MaterialPageRoute(builder: (context) => ThirdScreen()),
                       );
                     },
-                    child: Text('Choose a user',style: TextStyle(color: Colors.white, fontFamily:Fonts.MEDIUM,fontSize: 12)),
+                    child: Text('Choose a user',style: TextStyle(color: Colors.white, fontFamily:Fonts.MEDIUM,fontSize: 14)),
                   )
             ),
           ],
