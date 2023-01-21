@@ -1,16 +1,15 @@
-# suitmedia
+# Suitmedia
 
 Test Mobile Developer Intern 2023 by Risa Augusta Murti
 
-## Getting Started
+## Tech Stack and Tools
+- Flutter v.3.3.10
+- Dart v.2.18.6
+- REST API: https://reqres.in/
+- Android Studio IDE 2020.3.1
+- Postman
+- Macbook Pro M1 Chip 2020
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Demo apps URL
+https://drive.google.com/file/d/1rSvsutnxbTlyIfbuiTHJH1Vbf9p1Ys3H/view?usp=sharing
+ 
