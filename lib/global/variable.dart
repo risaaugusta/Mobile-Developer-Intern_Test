@@ -19,6 +19,7 @@ class ButtonStyle{
 
 class Global{
   static String name = '';
+  static String selectedName = '';
   static String palindrome = '';
   static String reverse = '';
   static String result = '';

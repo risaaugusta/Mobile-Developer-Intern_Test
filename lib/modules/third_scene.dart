@@ -19,7 +19,7 @@ class _ThirdSceneState extends State<ThirdScene> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => FirstScene()),
+              MaterialPageRoute(builder: (context) => SecondScene()),
             );
           },
         ),
@@ -38,14 +38,26 @@ class _ThirdSceneState extends State<ThirdScene> {
                   padding: EdgeInsets.all(10),
                   itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      leading: CircleAvatar(
-                        radius: 30,
-                        backgroundImage:
-                        NetworkImage(snapshot.data[index]['avatar']),
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SecondScene()),
+                        );
+
+                        setState(() {
+                          Global.selectedName = snapshot.data[index]['first_name'] + " " + snapshot.data[index]['last_name'];
+                        });
+                      },
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          radius: 30,
+                          backgroundImage:
+                          NetworkImage(snapshot.data[index]['avatar']),
+                        ),
+                        title: Text(snapshot.data[index]['first_name'] + " " + snapshot.data[index]['last_name'], style: TextStyle(color: Colors.black, fontFamily: Fonts.MEDIUM,fontSize: 16)),
+                        subtitle: Text(snapshot.data[index]['email'], style: TextStyle(color: Color(0xff686777), fontFamily: Fonts.MEDIUM,fontSize: 10)),
                       ),
-                      title: Text(snapshot.data[index]['first_name'] + " " + snapshot.data[index]['last_name'], style: TextStyle(color: Colors.black, fontFamily: Fonts.MEDIUM,fontSize: 16)),
-                      subtitle: Text(snapshot.data[index]['email'], style: TextStyle(color: Color(0xff686777), fontFamily: Fonts.MEDIUM,fontSize: 10)),
                     );
                   });
             } else {

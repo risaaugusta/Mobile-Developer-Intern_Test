@@ -40,7 +40,7 @@ class _SecondSceneState extends State<SecondScene> {
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 250),
-              child: Center(child: Text('Name',textAlign: TextAlign.center,style: TextStyle(color: Colors.black, fontFamily:Fonts.BOLD,fontSize: 20))),
+              child: Center(child: Text(Global.selectedName,textAlign: TextAlign.center,style: TextStyle(color: Colors.black, fontFamily:Fonts.BOLD,fontSize: 20))),
             ),
             Container(
               margin:  EdgeInsets.symmetric(horizontal: 20,vertical: 20),
